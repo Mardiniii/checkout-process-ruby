@@ -4,15 +4,14 @@ require 'pry'
 RSpec.describe Store do
   let!(:store) { Store.new }
 
-  describe "#add_product" do
+  describe "#load_products" do
     before do
-      store.add_product("VOUCHER", "Cabify Voucher", 5.0)
-      @product = store.products["VOUCHER"]
+      @product = store.products["TSHIRT"]
     end
 
-    it { expect(store.products.length).to eq(1) }
-    it { expect(@product.code).to eq("VOUCHER") }
-    it { expect(@product.name).to eq("Cabify Voucher") }
-    it { expect(@product.price).to eq(5.0) }
+    it { expect(store.products.length).to eq(3) }
+    it { expect(@product.code).to eq("TSHIRT") }
+    it { expect(@product.name).to eq("Cabify T-Shirt") }
+    it { expect(@product.price).to eq(20.00) }
   end
 end
