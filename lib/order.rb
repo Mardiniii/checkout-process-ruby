@@ -1,5 +1,4 @@
 require_relative 'order_item'
-require 'pry'
 
 class Order
   attr_reader :items

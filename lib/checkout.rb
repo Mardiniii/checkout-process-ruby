@@ -5,7 +5,8 @@ require_relative 'rules/rules'
 class Checkout
   attr_reader :order, :total, :store
 
-  def initialize
+  def initialize(pricing_rules)
+    @rules = pricing_rules
     @store = Store.new
     @order = Order.new
     @total = 0.00
@@ -22,6 +23,7 @@ class Checkout
   end
 
   def total
+    @rules.apply_rules(@order.items)
     @order.items.each do |_key, item|
       @total += (item.unit_price * item.quantity - item.discount).round(2)
     end

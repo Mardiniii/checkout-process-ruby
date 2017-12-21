@@ -1,5 +1,4 @@
 require_relative '../lib/store'
-require 'pry'
 
 RSpec.describe Store do
   let!(:store) { Store.new }
